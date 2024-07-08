@@ -1,0 +1,21 @@
+Use rvm to update ruby platform and use following line to install ruby
+rvm install 3.3.1 --with-openssl-dir=$(brew --prefix openssl@3)
+This avoid error building
+Also check KMP compatibility with Kdoctor
+androidApp folder can run in android studio
+iosApp can run in xcode. Those 2 folder we build the UI in jetpackcomposer and swiftUI
+
+shared contain common code and inside that android platform specific content written in
+androidMain and ios platform specific code in iosMain.
+Both platform share code written commonMain.
+
+Expect class we cannot initialize value and create concrete method. No implementation possible.
+Actual implementation carried out in specific platform folder. If we not implemented expected
+class we get following compile errors.
+Expected class 'Platform' has no actual declaration in module DailyPulse.shared.iosArm64Main for Native
+Expected class 'Platform' has no actual declaration in module DailyPulse.shared.iosSimulatorArm64Main for Native
+Expected class 'Platform' has no actual declaration in module DailyPulse.shared.iosX64Main for Native
+Expected class 'Platform' has no actual declaration in module DailyPulse.shared.main for JVM
+
+News API key
+e3980550655b4aa096d4bd6c508447e8
