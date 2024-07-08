@@ -15,7 +15,7 @@ import com.adeef.dailypulse.android.screens.Screen
 import com.adeef.dailypulse.articles.ArticlesViewModel
 
 @Composable
-fun AppScaffold(articlesViewModel: ArticlesViewModel) {
+fun AppScaffold() {
     val navController = rememberNavController()
 
     Scaffold {
@@ -24,7 +24,7 @@ fun AppScaffold(articlesViewModel: ArticlesViewModel) {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(it),
-            articlesViewModel
+
         )
     }
 }
@@ -33,7 +33,7 @@ fun AppScaffold(articlesViewModel: ArticlesViewModel) {
 fun AppNavHost(
     navController: NavHostController,
     modifier: Modifier = Modifier,
-    articlesViewModel: ArticlesViewModel
+
 ) {
     NavHost(
         navController = navController,
@@ -43,7 +43,7 @@ fun AppNavHost(
         composable(Screen.ARTICLES.route) {
             ArticleScreen(
                 onAboutButtonClick = { navController.navigate(Screen.ABOUT_DEVICE.route) },
-                articlesViewModel,
+
             )
         }
 

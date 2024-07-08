@@ -30,7 +30,7 @@ class MainActivity : ComponentActivity() {
                     //GreetingView("Hello")
                     //AboutScreen()
                    // ArticleScreen(onAboutButtonClick = { /*TODO*/ }, articlesViewModel = articlesViewModel)
-                    AppScaffold(articlesViewModel = articlesViewModel)
+                    AppScaffold()
                 }
             }
         }
