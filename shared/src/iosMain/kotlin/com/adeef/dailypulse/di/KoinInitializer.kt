@@ -1,13 +1,13 @@
 package com.adeef.dailypulse.di
 
-import com.adeef.dailypulse.articles.ArticlesViewModel
+import com.adeef.dailypulse.articles.presentation.ArticlesViewModel
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.koin.core.context.startKoin
 
 fun initKoin(){
 
-    val modules = sharedKoinModule
+    val modules = sharedKoinModule + databaseModule
 
     startKoin {
         modules(modules)

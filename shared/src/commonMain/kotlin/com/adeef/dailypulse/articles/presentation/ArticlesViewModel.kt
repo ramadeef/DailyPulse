@@ -1,15 +1,11 @@
-package com.adeef.dailypulse.articles
+package com.adeef.dailypulse.articles.presentation
 
 import com.adeef.dailypulse.BaseViewModel
-import io.ktor.client.HttpClient
-import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
-import io.ktor.http.ContentType.Application.Json
-import io.ktor.serialization.kotlinx.json.json
-import kotlinx.coroutines.delay
+import com.adeef.dailypulse.articles.domain.Article
+import com.adeef.dailypulse.articles.domain.ArticlesUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import kotlinx.serialization.json.Json
 
 class ArticlesViewModel(
     private val useCase: ArticlesUseCase
@@ -33,15 +29,14 @@ class ArticlesViewModel(
 //        useCase = ArticlesUseCase(service)
         getArticles()
     }
-    private fun getArticles(){
+     fun getArticles(forceFetch: Boolean = false){
         scope.launch{
-            //delay(2000)
 
-            //_articlesState.emit(ArticlesState(error="Something went wrong!!"))
-                //val fetchedArticles = fetchArticles()
-                val fetchedArticles = useCase.getArticles()
-             //       delay(2000)
-                    _articlesState.emit(ArticlesState(articles = fetchedArticles))
+            _articlesState.emit(ArticlesState(loading = true, articles = _articlesState.value.articles))
+
+            val fetchedArticles = useCase.getArticles(forceFetch)
+
+            _articlesState.emit(ArticlesState(articles = fetchedArticles))
         }
     }
 
