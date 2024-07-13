@@ -1,5 +1,7 @@
-package com.adeef.dailypulse.articles
+package com.adeef.dailypulse.articles.domain
 
+import com.adeef.dailypulse.articles.data.ArticleRaw
+import com.adeef.dailypulse.articles.data.ArticlesRepository
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
@@ -8,9 +10,9 @@ import kotlinx.datetime.toLocalDateTime
 import kotlinx.datetime.todayIn
 import kotlin.math.abs
 
-class ArticlesUseCase(private val service:ArticlesService) {
-    suspend fun getArticles(): List<Article> {
-        val articlesRaw = service.fetchArticles()
+class ArticlesUseCase(private val repo: ArticlesRepository) {
+    suspend fun getArticles(forceFetch: Boolean): List<Article> {
+        val articlesRaw = repo.getArticles(forceFetch)
         return mapArticles(articlesRaw)
     }
 

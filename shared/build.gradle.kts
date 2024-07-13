@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.androidLibrary)
     id("co.touchlab.skie") version "0.8.2"
     kotlin("plugin.serialization") version "1.9.20"
+    alias(libs.plugins.sqlDelight)
+
 }
 
 kotlin {
@@ -34,18 +36,20 @@ kotlin {
             implementation(libs.ktor.serialization.kotlinx.json)
             implementation(libs.kotlinx.datetime)
             implementation(libs.koin.core)
-
+            implementation(libs.sql.coroutines.extensions)
         }
 
         androidMain.dependencies {
             //put your android dependencies here
             implementation(libs.androidx.lifecycle.viewmodel.android)
             implementation(libs.ktor.client.android)
+            implementation(libs.sql.android.driver)
         }
 
         iosMain.dependencies {
             //put your ios dependencies here
             implementation(libs.ktor.client.darwin)
+            implementation(libs.sql.native.driver)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -65,4 +69,12 @@ android {
     }
 
     task("testClasses")
+}
+
+sqldelight {
+    databases {
+        create(name = "DailyPulseDatabase") {
+            packageName.set("com.adeef.dailypulse.db")
+        }
+    }
 }

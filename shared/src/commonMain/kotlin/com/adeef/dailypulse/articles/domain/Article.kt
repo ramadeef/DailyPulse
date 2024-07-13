@@ -1,4 +1,4 @@
-package com.adeef.dailypulse.articles
+package com.adeef.dailypulse.articles.domain
 
 data class Article(
     val title: String,

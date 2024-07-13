@@ -19,3 +19,24 @@ Expected class 'Platform' has no actual declaration in module DailyPulse.shared.
 
 News API key
 e3980550655b4aa096d4bd6c508447e8
+
+New Requirement Sources
+GET https://newsapi.org/v2/top-headlines/sources?apiKey=API_KEY
+{
+"status": "ok",
+-"sources": [
+-{
+"id": "abc-news",
+"name": "ABC News",
+"description": "Your trusted source for breaking news, analysis, exclusive interviews, headlines, and videos at ABCNews.com.",
+"url": "https://abcnews.go.com",
+"category": "general",
+"language": "en",
+"country": "us"
+},
+
+IOS
+Add a top bar icon. Show in model and done button to close model
+Android
+goto full screen and back button
+You have  to create viewmodel usecase and data source to retrive the resul and save it in local data base.

@@ -10,9 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.adeef.dailypulse.Platform
-import com.adeef.dailypulse.android.screens.AboutScreen
-import com.adeef.dailypulse.android.screens.ArticleScreen
-import com.adeef.dailypulse.articles.ArticlesViewModel
+import com.adeef.dailypulse.articles.presentation.ArticlesViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
